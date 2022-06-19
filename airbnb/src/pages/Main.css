@@ -1,0 +1,42 @@
+img { 
+  border-radius: 15px;
+}
+
+span {
+  font-weight: bold;
+}
+
+.footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  padding-top: 10px;
+  margin-bottom: 10px;
+  bottom: 40px;
+  border-top: 1px solid #dddddd;
+}
+
+.footerLeft {
+  color: #222222;
+  font-size: 14px;
+  margin-left: 155px;
+}
+
+.footerRight {
+  font-weight: 600;
+  font-size: 14px;
+  margin-right: 165px;
+}
+
+.bottom {
+  display : block;
+  position: absolute;
+  bottom: 0px;
+  color: gray;
+  padding: 5px 155px 8px 155px;
+  font-size: 10px;
+  flex-direction: column;
+  letter-spacing: 0.02em;
+}

@@ -21,7 +21,6 @@ select {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-
 }
 
 .leftBox {
@@ -41,12 +40,11 @@ select {
   flex-direction: column;
   float: left;
   padding: 30px;
-  margin-left : 50px;
+  margin-left : 100px;
   gap: 5px;
 }
 
 .option {
   margin-top: 20px;
-  
 }
 
