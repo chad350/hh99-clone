@@ -10,17 +10,19 @@ import './PostAdd.css'
 const PostAdd = () => {
 
   const [selectedImages, setSelectedImages] = useState();
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const addressInputRef = useRef();
   const titleInputRef = useRef();
   const feeInputRef = useRef();
   const peopleInputRef = useRef();
+  const contentInputRef = useRef();
   const categoryInputRef = useRef();
   const roomInputRef = useRef();
   const wifiInputRef = useRef();
   const parkingInputRef = useRef();
-  
+
   const onChangeSelectImages = (e) => {
     setSelectedImages(e.target.files);
   }
@@ -31,13 +33,14 @@ const PostAdd = () => {
     const form = new FormData();
 
     for(let i = 0 ; i < selectedImages ; i++){
-      form.append("image", selectedImages);
+      form.append("images", selectedImages);
     }
 
     form.append("address", addressInputRef.current.value);
     form.append("title", titleInputRef.current.value);
     form.append("fee", feeInputRef.current.value);
     form.append("people", peopleInputRef.current.value);
+    form.append("content", contentInputRef.current.value);
     form.append("category", categoryInputRef.current.value);
     form.append("room", roomInputRef.current.value);
     form.append("wifi", wifiInputRef.current.value);
@@ -46,7 +49,6 @@ const PostAdd = () => {
     dispatch(__addPost({
       formData : form
     }));
-
     navigate('/');
   }
 
@@ -67,7 +69,10 @@ const PostAdd = () => {
           <h4>숙박 가능 최대 인원을 작성해주세요.</h4>
           <input ref={peopleInputRef} type='text' />
 
-          <h4>여러분의 숙소를 소개해주세요.</h4>
+          <h4>여러분의 숙소를 설명해주세요.</h4>
+          <input ref={contentInputRef} type='text' />
+
+          <h4>여러분의 숙소를 보여주세요.</h4>
           <input type='file' multiple onChange={onChangeSelectImages} accept='image/*'/>
 
           <div className='option'>

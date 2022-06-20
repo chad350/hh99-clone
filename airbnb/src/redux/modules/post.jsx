@@ -1,5 +1,5 @@
 import axios from 'axios';
-//import {getCookie} from "../../shared/Cookie";
+// import {getCookie} from '../../shared/cookie'
 
 //액션타입
 const LOAD_POST = "LOAD_POST"
@@ -32,17 +32,22 @@ export const __loadPosts = (token) => async (dispatch, getState) => {
 }
 
 export const __addPost = (payload) => async (dispatch, getState) => {
+  // 데이터 확인을 위한 코드입니다.
+  // payload.formData.forEach((form,key)=>{
+  //   console.log(payload.formData.get(key));
+  // })
 
+  // const myToken = getCookie("Authorization")
   try {
-    const response = await axios.post("http://15.164.50.132/api/accommodations", 
-    payload.formData,
+    const response = await axios.post(
+      "http://3.34.4.93/api/accommodation", 
+      payload.formData,
     {
       headers : {
-    //    Authorization : `Bearer ${myToken}`
-          "Content-Type":"multipart/form-data"
-      }
-    }
-    )
+      // Authorization : `Bearer ${myToken}`,
+      "Content-Type":"multipart/form-data"
+      },
+    });
     window.alert("호스팅이 완료되었습니다😀")
     dispatch(addPost(response.data))
   }catch (error) {
