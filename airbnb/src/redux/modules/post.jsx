@@ -20,12 +20,11 @@ const addPost = (payload) => {
 //미들웨어
 export const __loadPosts = (token, category) => async (dispatch, getState) => {
   try {
-  
     const params = {category : category};
 
     const response = await axios.get("http://3.34.4.93/api/accommodations", 
     {
-    headers : {
+      headers : {
           Authorization : `Bearer ${token}`,
       },
       params : params
@@ -56,6 +55,7 @@ export const __addPost = (payload) => async (dispatch, getState) => {
       },
     });
     window.alert("호스팅이 완료되었습니다😀")
+
     dispatch(addPost(response.data))
   }catch (error) {
     console.log(error);
@@ -74,9 +74,9 @@ const initialState = {
 
 //리듀서
 const postReducer = (state = initialState, action) => {
+  console.log(action)
   switch (action.type) {
     case LOAD_POST:
-
       return { ...state, posts: action.payload };
 
     case ADD_POST:

@@ -11,6 +11,7 @@ import { __loadPosts } from "../redux/modules/post";
 import Footer from "../components/Main/Footer";
 import SlickCategory from "../components/Main/SlickCategory";
 import Header from "../../src/components/Header";
+import { GoStar } from "react-icons/go";
 
 const Main = () => {
   const navigate = useNavigate();
@@ -24,28 +25,35 @@ dispatch(__loadPosts(token))
 
   const { posts } = useSelector((state) => state.postReducer);
 
+  console.log(posts)
 
+  if (!posts) return;
   return (
     <>
-      <Header style={{ position: "fixed" }} />
+      <Header/>
       <SlickCategory />
       <PostBox>
         {posts?.map((post) => 
         {
+          console.log(post)
           return <Posts
           key={post.id}
           onClick={() => {
             navigate(`/detail/${post.id}`);
           }}
         >
-          <img src={post.photoUrls[0]} width="300px" height="300px" alt=""/>
+          <img src={post?.photoUrls[0]} width="300px" height="300px" alt=""/>
           <NameBox>
-            <span>{post.title}</span>
-            <span className="right">NEW ⭐</span>
+            <span>{post?.title}</span>
+            <span className="right">
+              NEW 
+              <GoStar style={{ width: "14px", marginRight: "2px"}} />
+            </span>
           </NameBox>
-          <span>₩{post.fee}/박</span>
+          <span>₩{post?.fee}/박</span>
         </Posts>
-        })}
+        }
+        )}
       </PostBox>
       <Footer />
     </>
@@ -60,7 +68,7 @@ const PostBox = styled.div`
   justify-content: space-around;
   align-content: center;
   margin-top: 10px;
-  margin-left: 60px;
+  margin-left: 40px;
   padding: 100px;
 `;
 

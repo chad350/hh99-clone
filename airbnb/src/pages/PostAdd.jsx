@@ -11,7 +11,7 @@ import { FaAirbnb } from "react-icons/fa";
 
 
 const PostAdd = () => {
-    const [selectedImages, setSelectedImages] = useState();
+    const [selectedImages, setSelectedImages] = useState([]);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const addressInputRef = useRef();
@@ -32,6 +32,11 @@ const PostAdd = () => {
     const addPost = (e) => {
         e.preventDefault();
 
+        if(selectedImages === null || selectedImages.length !== 5){
+            alert("이미지는 5장 넣어주세요")
+            return;
+        } 
+
         const form = new FormData();
 
     for(let i = 0 ; i < selectedImages.length ; i++){
@@ -48,14 +53,12 @@ const PostAdd = () => {
         form.append('wifi', wifiInputRef.current.value);
         form.append('parking', parkingInputRef.current.value);
 
-        setTimeout(() => {
-            dispatch(
-                __addPost({
-                    formData: form
-                })
-            );
-            navigate('/');
-        }, 3000)
+        dispatch(
+            __addPost({
+                formData: form,
+            })
+        );
+        navigate('/');
     };
 
     return (
