@@ -1,3 +1,5 @@
+//호스팅 페이지(postAdd)
+
 import React from 'react';
 import { useRef } from 'react';
 import { useState } from 'react';
@@ -8,12 +10,12 @@ import '../css/PostAdd.css'
 import { FaAirbnb } from "react-icons/fa";
 
 
-
-
 const PostAdd = () => {
-    const [selectedImages, setSelectedImages] = useState([]);
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    const [selectedImages, setSelectedImages] = useState([]);
     const addressInputRef = useRef();
     const titleInputRef = useRef();
     const feeInputRef = useRef();
@@ -27,7 +29,6 @@ const PostAdd = () => {
     const onChangeSelectImages = (e) => {
         setSelectedImages(e.target.files);
     };
-
 
     const addPost = (e) => {
         e.preventDefault();
@@ -69,6 +70,8 @@ const PostAdd = () => {
                 </Link>
                 <span>호스팅을 시작합니다.</span>
             </div>
+
+            {/* 다중 이미지 파일&input 데이터 전송을 위해 formData 사용 */}
             <form className="postBox">
                 <h4>숙소 주소를 입력해주세요.</h4>
                 <input ref={addressInputRef} type="text" />

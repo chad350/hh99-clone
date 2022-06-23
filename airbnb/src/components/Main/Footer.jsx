@@ -1,3 +1,5 @@
+//메인페이지 하단 FOOTER 컴포넌트
+
 import React from 'react'
 import { TbWorld } from 'react-icons/tb'
 import { MdOutlineMap } from "react-icons/md";

@@ -1,3 +1,5 @@
+//카테고리 컴포넌트
+
 import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -16,6 +18,7 @@ import { __loadPosts } from "../../redux/modules/post";
 const SlickCategory = (props) => {
 
   const dispatch = useDispatch();
+
   const token = getCookie("Authorization")
 
   const selectCategory = (category) => {
@@ -140,7 +143,6 @@ const SlickCategory = (props) => {
 
 export default SlickCategory;
 
-
 const Container = styled.div`
 display: flex ;
 justify-content: center;
@@ -174,6 +176,7 @@ margin-right: auto ;
 font-size: 15px;
 `
 
+//카테고리 스타일을 조정할 수 있는 코드입니다. ex)한 페이지에 보이는 카테고리 갯수!!
 const settings = {
   dots: false,
   infinite: false,
