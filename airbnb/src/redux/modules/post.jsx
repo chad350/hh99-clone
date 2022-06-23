@@ -17,7 +17,7 @@ const addPost = (payload) => {
 //미들웨어
 export const __loadPosts = (token, category) => async (dispatch, getState) => {
   try {
-    const params = { category: category };
+    const params = { category: category ?? "펜션"};
 
     const response = await axios.get("http://3.34.4.93/api/accommodations", {
       headers: {

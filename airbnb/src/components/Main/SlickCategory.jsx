@@ -13,16 +13,16 @@ import { RiCactusLine } from "react-icons/ri";
 import { MdHouseboat, MdApartment, MdHotel, MdHome, MdOutlineHolidayVillage, MdOutlineCottage, MdSportsGolf, MdKitesurfing, MdDownhillSkiing } from 'react-icons/md'
 import { useDispatch } from "react-redux";
 import {getCookie} from "../../shared/cookie"
-import { __loadPosts } from "../../redux/modules/post";
+import {useNavigate} from "react-router-dom";
 
 const SlickCategory = (props) => {
 
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const token = getCookie("Authorization")
 
   const selectCategory = (category) => {
-    dispatch(__loadPosts(token, category))
+    navigate(`/?category=${category}`);
   }
 
   return (

@@ -4,7 +4,7 @@ import React from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import { getCookie } from "../shared/cookie";
 import { __loadPosts } from "../redux/modules/post";
 
@@ -23,11 +23,15 @@ const Main = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const token = getCookie("Authorization");
+  const location = useLocation();
 
 
   useEffect(() => {
-    dispatch(__loadPosts(token));
-  }, [dispatch, token]);
+      const sch = location.search;
+      const schParams = new URLSearchParams(sch);
+      const category = schParams.get("category");
+      dispatch(__loadPosts(token, category));
+  }, [dispatch, token, location]);
 
   if (!posts) return;
   return (
